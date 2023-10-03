@@ -20,5 +20,7 @@ public class InterectableItem : MonoBehaviour
         selectedItem = inventory.GetSelectedItem();
         //atribui a cor do botão selecionado ao botão do item verde
         greenButton.image.color = selectedItem.image.color;
+        //destroi o item do inventário
+        inventory.DestroySelectedItem();
     }
 }

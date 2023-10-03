@@ -64,9 +64,11 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
         }
     }
 
-    // public void deleteObject(){
-
-    // }
-
+    //procedimento público que destrói o item do inventário
+    public void DestroySelectedItem(){
+        selectedItem.image.sprite = null; //sprite do botão nulo
+        selectedItem.image.color = Color.white; //botão volta a ter cor branca
+        selectedItem.interactable = false; //botão não fica mais interativo
+    }
 
 }
