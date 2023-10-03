@@ -1,3 +1,4 @@
+//classe responsável pelo inventário
 // declaração das classes a serem utilizadas
 using System.Collections;
 using System.Collections.Generic;

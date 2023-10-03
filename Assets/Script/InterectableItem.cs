@@ -1,3 +1,4 @@
+//classe representando itens interativos
 // declaração de classes a serem utilizadas
 using System.Collections;
 using System.Collections.Generic;

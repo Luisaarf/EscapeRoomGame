@@ -1,3 +1,4 @@
+//classe representando as paredes da sala 
 // declaração de classes a serem utilizadas
 using System.Collections;
 using System.Collections.Generic;
