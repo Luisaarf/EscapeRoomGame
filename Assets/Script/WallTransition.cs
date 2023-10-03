@@ -24,6 +24,8 @@ public class WallTransition : MonoBehaviour  //classe pública WallTransition qu
 
     //declaração de variável que guarda a parede atual
     [SerializeField] private int currentWall;
+    
+    //procedimento Start é chamado antes da primeira atualização do frame
     void Start()
     {
         //inicialização das paredes do jogo
@@ -61,14 +63,18 @@ public class WallTransition : MonoBehaviour  //classe pública WallTransition qu
     //função chamada ao clicar na seta direita
     // retorno vazio e pública
     public void MoveRight(){
+        //desativa parede atual acessando pelo índice
         allWalls[currentWall].SetActive(false);
+        //se a parede atual for a parede 1
         if(currentWall == 0){
+            // define parede atual como 4
             currentWall = 3;
+            //ativa parede atual acessando pelo índice
             allWalls[3].SetActive(true);
-        }
+        } //se não for
         else{
-            currentWall--;
-            allWalls[currentWall].SetActive(true);
+            currentWall--; //reduz o índice da parede atual em 1
+            allWalls[currentWall].SetActive(true); //ativa parede atual acessando pelo índice
         }
     }
 
