@@ -19,9 +19,11 @@ public class InterectableItem : MonoBehaviour
     public void GreenInteract(){
         //atribui o retorno da função GetSelectedItem() à variável selectedItem //essa função existe no objeto inventory
         selectedItem = inventory.GetSelectedItem();
-        //atribui a cor do botão selecionado ao botão do item verde
-        greenButton.image.color = selectedItem.image.color;
-        //destroi o item do inventário
-        inventory.DestroySelectedItem();
+        if (selectedItem != null){
+            //atribui a cor do botão selecionado ao botão do item verde
+            greenButton.image.color = selectedItem.image.color;
+            //destroi o item do inventário
+            inventory.DestroySelectedItem();
+        }
     }
 }

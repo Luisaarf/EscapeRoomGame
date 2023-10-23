@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
     public Button[] allSpaces;
     //variável pública e estática (preservar valor mesmo depois de sair do escopo) que guarda o botão selecionado
     [SerializeField] private static Button selectedItem;
+    [SerializeField] private static Button newSelectedItem;
 
     //declaração de objeto da classe EventSystem
     EventSystem system;
@@ -38,7 +39,12 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
 
     //procedimento que atribui o botão selecionado à variável selectedItem
     public void SetSelectedItemButton(){
-        selectedItem = system.currentSelectedGameObject.GetComponent<Button>();
+        newSelectedItem = system.currentSelectedGameObject.GetComponent<Button>();
+        if(newSelectedItem != selectedItem){
+            selectedItem = newSelectedItem;
+        } else {
+            selectedItem = null;
+        }
     }
 
     //método que ativa a interação do botão selecionado
@@ -70,6 +76,7 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
         selectedItem.image.sprite = null; //sprite do botão nulo
         selectedItem.image.color = Color.white; //botão volta a ter cor branca
         selectedItem.interactable = false; //botão não fica mais interativo
+        selectedItem = null;
     }
 
 }
