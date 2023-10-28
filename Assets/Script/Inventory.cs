@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
         }
     }
 
-    //método de retorna o botão selecionado
+    //método que retorna o botão selecionado
     public Button GetSelectedItem(){
         return selectedItem;
     }
