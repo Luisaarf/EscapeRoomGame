@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - inventorySpace
+  - Dot
   layers:
   - Default
   - TransparentFX

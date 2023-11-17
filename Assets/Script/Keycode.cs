@@ -13,6 +13,9 @@ public class Keycode : MonoBehaviour
     [SerializeField] private TMP_Text fourthText;
     [SerializeField] private TMP_Text fithText;
 
+    [SerializeField] private TMP_Text sixthText;
+    private bool isCorrect = false;
+
     public Button currentButton;
     public TMP_Text currentText;
     // Start is called before the first frame update
@@ -23,29 +26,35 @@ public class Keycode : MonoBehaviour
         thirdText.text = "0";
         fourthText.text = "0";
         fithText.text = "0";
+        sixthText.text = "0";
+        isCorrect = false;
     }
 
     // Update is called once per frame
     public void AddNumber()
     {
-        currentButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-        currentText = currentButton.GetComponentInChildren<TMP_Text>();
-        int num = int.Parse(currentText.text);
-        if(num ==9)
-        {
-            currentText.text = 0.ToString();
+        if(isCorrect == false){
+            currentButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            currentText = currentButton.GetComponentInChildren<TMP_Text>();
+            int num = int.Parse(currentText.text);
+            if(num ==9)
+            {
+                currentText.text = 0.ToString();
+            }
+            else{
+                currentText.text = (num+1).ToString();
+            }
+            VerifyCode();
         }
-        else{
-            currentText.text = (num+1).ToString();
-        }
-       VerifyCode();
     }
 
     public void VerifyCode(){
-        if (oneText.text == "9" && secondText.text == "3" && thirdText.text == "4" && fourthText.text == "8" && fithText.text == "2"){
-            Debug.Log("Certo");
-        }else{
-            Debug.Log("Errado");
+        if (oneText.text == "1" && secondText.text == "1" && thirdText.text == "1" && fourthText.text == "1" && fithText.text == "1" && sixthText.text == "1"){
+            isCorrect = true;
         }
+    }
+
+    public bool GetIsCorrect(){
+        return isCorrect;
     }
 }

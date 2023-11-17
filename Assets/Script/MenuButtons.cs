@@ -49,7 +49,9 @@ public class MenuButtons : MonoBehaviour
     }
 
     void Start(){
-        pausePanel.SetActive(false);
+        if(pausePanel){
+            pausePanel.SetActive(false);
+        }
     }
 
 }
