@@ -47,6 +47,8 @@ public class Painting : MonoBehaviour
 
     public void setColor(){
         string gameObject = system.currentSelectedGameObject.name;
+        Debug.Log(gameObject);
+        Debug.Log(currentColor);
         if (gameObject == "sky"){
             if(currentColor == "colors-C"){
                 image =system.currentSelectedGameObject.GetComponent<Image>();
