@@ -20,6 +20,8 @@ public class WallTransition : MonoBehaviour  //classe pública WallTransition qu
     [SerializeField] private Button leftArrow;
     [SerializeField] private Button rightArrow;
 
+    [SerializeField] private GameObject dot;
+
     //declaração de array que guarda todas as paredes do jogo
     public GameObject[] allWalls;
 
@@ -29,6 +31,7 @@ public class WallTransition : MonoBehaviour  //classe pública WallTransition qu
     //procedimento Start é chamado antes da primeira atualização do frame
     void Start()
     {
+        dot.SetActive(true);
         //inicialização das paredes do jogo
         allWalls[0] = wall1;
         allWalls[1] = wall2;

@@ -8,6 +8,7 @@ using TMPro;
 public class Painting : MonoBehaviour
 {
     [SerializeField] Button paintingFocus;
+    [SerializeField] DrawerInteraction drawerInteraction;
     [SerializeField] Button disfocusButton;
     [SerializeField] GameObject painting;
     [SerializeField] GameObject numberSky;
@@ -15,6 +16,7 @@ public class Painting : MonoBehaviour
     [SerializeField] GameObject numberSun;
     [SerializeField] GameObject numberLeaves;
     [SerializeField] GameObject numberTreeWood;
+    [SerializeField] GameObject numberHouse;
 
     [SerializeField] GameObject Cloud1;
     [SerializeField] GameObject Cloud2;
@@ -37,6 +39,7 @@ public class Painting : MonoBehaviour
         numberSun.SetActive(false);
         numberLeaves.SetActive(false);
         numberTreeWood.SetActive(false);
+        numberHouse.SetActive(false);
         initialPosition = painting.transform.position;
         initialScale = painting.transform.localScale;
     }
@@ -80,9 +83,16 @@ public class Painting : MonoBehaviour
         }
         if(gameObject == "treewood"){
             if(currentColor == "colors-B"){
-                image =system.currentSelectedGameObject.GetComponent<Image>();
+                image =system.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>();
                 numberTreeWood.SetActive(true);
                 image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+            }
+        }
+        if(gameObject == "house"){
+            if(currentColor == "colors-L"){
+                image =system.currentSelectedGameObject.GetComponent<Image>();
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+                numberHouse.SetActive(true);
             }
         }
     }
@@ -98,12 +108,16 @@ public class Painting : MonoBehaviour
         painting.transform.localScale = new Vector3(1, 0.85f, 1);
         painting.transform.position = new Vector3(Screen.width * 0.5f, (Screen.height * 0.5f)+80f, 0);
         disfocusButton.gameObject.SetActive(true);
+        paintingFocus.gameObject.SetActive(false);
+        drawerInteraction.disableDrawerButton();
     }
 
     public void disfocusOnPainting(){
         painting.transform.localScale = initialScale;
         painting.transform.position = initialPosition;
         disfocusButton.gameObject.SetActive(false);
+        paintingFocus.gameObject.SetActive(true);
+        drawerInteraction.enableDrawerButton();
     }
 
 }

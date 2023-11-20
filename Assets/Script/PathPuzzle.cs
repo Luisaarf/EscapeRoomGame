@@ -24,6 +24,7 @@ public class PathPuzzle : MonoBehaviour
 
     void Start()
     {
+        firstDot.gameObject.SetActive(true);
         counterClick = 0;
         for (int i = 0; i < 9; i++)
         {

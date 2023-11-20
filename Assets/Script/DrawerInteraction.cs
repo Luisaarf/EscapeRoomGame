@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DrawerInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject drawerScene;
+    [SerializeField] private GameObject paitingScene;
     [SerializeField] private GameObject openFirstDrawerScene;
     [SerializeField] private Button openDrawerButton;
     [SerializeField] private Button openDrawerSecondButton;
@@ -32,6 +33,7 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerSecondButton.gameObject.SetActive(false);
         openDrawerThirdButton.gameObject.SetActive(false);
         pathPuzzleButton.gameObject.SetActive(false);
+        paitingScene.SetActive(false);
         if(keycode.GetIsCorrect() == false || notOpenYet)
         {
             notOpenYet = false;
@@ -52,6 +54,7 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerSecondButton.gameObject.SetActive(false);
         openDrawerThirdButton.gameObject.SetActive(false);
         pathPuzzleButton.gameObject.SetActive(false);
+        paitingScene.SetActive(false);
     }
 
     public void CloseDrawer()
@@ -62,11 +65,26 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerSecondButton.gameObject.SetActive(true);
         openDrawerThirdButton.gameObject.SetActive(true);
         pathPuzzleButton.gameObject.SetActive(true);
+        paitingScene.SetActive(true);
         charcoal.SetActive(false);
     }
 
     public void showCharcoal(){
         charcoal.SetActive(true);
+    }
+
+    public void disableDrawerButton(){
+        openDrawerButton.gameObject.SetActive(false);
+        openDrawerSecondButton.gameObject.SetActive(false);
+        openDrawerThirdButton.gameObject.SetActive(false);
+        pathPuzzleButton.gameObject.SetActive(false);
+    }
+
+    public void enableDrawerButton(){
+        openDrawerButton.gameObject.SetActive(true);
+        openDrawerSecondButton.gameObject.SetActive(true);
+        openDrawerThirdButton.gameObject.SetActive(true);
+        pathPuzzleButton.gameObject.SetActive(true);
     }
 
 

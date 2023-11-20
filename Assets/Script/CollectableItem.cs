@@ -12,7 +12,7 @@ public class CollectableItem : MonoBehaviour
 {
     //declaração de objeto da classe Inventory
     [SerializeField] Inventory inventory;
-    [SerializeField] Button charcoalButton;
+    //[SerializeField] Button charcoalButton;
     //declaração de objeto da classe EventSystem
     EventSystem system;
     //declaração de variável privada que guarda o botão selecionado 

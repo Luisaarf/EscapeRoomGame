@@ -49,7 +49,7 @@ public class Keycode : MonoBehaviour
     }
 
     public void VerifyCode(){
-        if (oneText.text == "1" && secondText.text == "1" && thirdText.text == "1" && fourthText.text == "1" && fithText.text == "1" && sixthText.text == "1"){
+        if (oneText.text == "9" && secondText.text == "3" && thirdText.text == "4" && fourthText.text == "8" && fithText.text == "2" && sixthText.text == "1"){
             isCorrect = true;
         }
     }
