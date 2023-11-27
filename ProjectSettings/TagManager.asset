@@ -7,6 +7,9 @@ TagManager:
   - Wall
   - inventorySpace
   - Dot
+  - whiteLightButton
+  - greenLightButton
+  - theaterImage
   layers:
   - Default
   - TransparentFX

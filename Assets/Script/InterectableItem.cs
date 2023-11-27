@@ -19,6 +19,9 @@ public class InterectableItem : MonoBehaviour
     [SerializeField] private GameObject doorMessage;
     [SerializeField] private GameObject doorFrameMessage;
     [SerializeField] private GameObject doorClickMessage;
+    string nameObject;
+
+    [SerializeField] CakeInfo cakeInfo;
 
     void Start(){
         doorMessage.SetActive(false);
@@ -36,6 +39,15 @@ public class InterectableItem : MonoBehaviour
             greenButton.image.color = selectedItem.image.color;
             //destroi o item do inventário
             inventory.DestroySelectedItem();
+        }
+    }
+
+    public void CakeInteract(){
+        nameObject = inventory.GetSelectedItemName();
+        Debug.Log(nameObject);
+        if (nameObject == "Faca"){
+            Debug.Log("Cortou o bolo");
+            cakeInfo.cutTheCake();
         }
     }
 

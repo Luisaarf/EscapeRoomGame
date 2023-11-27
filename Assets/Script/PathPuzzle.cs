@@ -13,8 +13,12 @@ public class PathPuzzle : MonoBehaviour
     [SerializeField] private GameObject pathSelected;
 
      [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Inventory inventory;
+    [SerializeField] private GameObject pinEnd;
+    [SerializeField] private GameObject Knife;
     GameObject activePiece;
     bool isDragging;
+    bool endPath;
 
     string[] DotPathNumbers = new string[15] { "house","01", "02", "12", "23", "33", "43", "44",  "53", "63", "64", "74","85", "76", "86"};
 
@@ -37,6 +41,8 @@ public class PathPuzzle : MonoBehaviour
         }
         lineRenderer.positionCount = 1;
         lineRenderer.startWidth = 0.3f;
+        endPath = false;
+        Knife.SetActive(false);
     }
 
     void verifyDotPath(){
@@ -47,7 +53,14 @@ public class PathPuzzle : MonoBehaviour
             if(pathSelected.name == DotPathNumbers[orderToEndLine]){
                 orderToEndLine++;
                 orderToBeginLine++;
-                    //fazer o traço se definir, ficar na tela
+                if(orderToEndLine == 15){
+                    pinEnd.GetComponent<Button>().interactable = true;
+                    Vector3 otherPosn = pinEnd.transform.position;
+                    pinEnd.transform.position = new Vector3(otherPosn.x, otherPosn.y, -5);
+                    endPath = true;
+                    Knife.SetActive(true);
+
+                }
             } else {
                 counterClick = counterClick - 2;
                 lineRenderer.positionCount--;
@@ -70,11 +83,10 @@ public class PathPuzzle : MonoBehaviour
 
     void Update()
     {
-            if(Input.GetMouseButtonDown(0)&& PathPuzzleScene.activeSelf){
+            if(Input.GetMouseButtonDown(0)&& PathPuzzleScene.activeSelf && endPath == false){
                 Ray Cameraray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.GetRayIntersection(Cameraray);
-                //verificar se o carvão está selecionado também
-                if(hit.collider != null){  //hit collider não é nulo
+                if(hit.collider != null && inventory.GetSelectedItemName() == "Carvão"){  //hit collider não é nulo
                     pathSelected = hit.collider.gameObject;
                     if (pathSelected.tag == "Dot")
                     {

@@ -16,6 +16,7 @@ public class DrawerInteraction : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Keycode keycode;
     [SerializeField] private GameObject charcoal;
+    [SerializeField] private GameObject coffee;
 
     private bool notOpenYet;
 
@@ -42,6 +43,7 @@ public class DrawerInteraction : MonoBehaviour
         else
         {
             openFirstDrawerScene.SetActive(true);
+            showCoffee();
             // openDrawerSecondButton.gameObject.SetActive(true);
             // openDrawerThirdButton.gameObject.SetActive(true);
         }
@@ -55,6 +57,7 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerThirdButton.gameObject.SetActive(false);
         pathPuzzleButton.gameObject.SetActive(false);
         paitingScene.SetActive(false);
+        coffee.SetActive(false);
     }
 
     public void CloseDrawer()
@@ -67,6 +70,10 @@ public class DrawerInteraction : MonoBehaviour
         pathPuzzleButton.gameObject.SetActive(true);
         paitingScene.SetActive(true);
         charcoal.SetActive(false);
+    }
+
+    public void showCoffee(){
+        coffee.SetActive(true);
     }
 
     public void showCharcoal(){
