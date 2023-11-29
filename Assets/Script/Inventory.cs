@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
     [SerializeField] private static Button newSelectedItem;
     [SerializeField] private SelectedFeedback selectedFeedback;
     [SerializeField] private GameObject spaceIn;
+    [SerializeField] private Sprite square;
 
     //declaração de objeto da classe EventSystem
     EventSystem system;
@@ -67,6 +68,12 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
         }
     }
 
+    public void SetSelectedItemButtonNull(){
+        selectedItem = null;
+        newSelectedItem.GetComponent<Outline>().effectColor = Color.black;
+        selectedFeedback.showObjectSelectedName();
+    }
+
     //método que ativa a interação do botão selecionado
     public void SetInteractable(int index){
         //ativa a interação botão acessando pelo índice
@@ -99,10 +106,12 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
 
     //procedimento público que destrói o item do inventário
     public void DestroySelectedItem(){
-        selectedItem.image.sprite = null; //sprite do botão nulo
-        selectedItem.image.color = Color.white; //botão volta a ter cor branca
+        selectedItem.GetComponent<Image>().sprite = square; //sprite do botão nulo
+        selectedItem.GetComponent<Image>().color =Color.white; //botão volta a ter cor padrão
+        selectedItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = square;
+        selectedItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color(0.784f, 0.784f, 0.784f, 1f);
         selectedItem.interactable = false; //botão não fica mais interativo
-        selectedItem = null;
+        SetSelectedItemButtonNull();
     }
 
 }

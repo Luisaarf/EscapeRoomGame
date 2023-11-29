@@ -46,7 +46,6 @@ public class InterectableItem : MonoBehaviour
         nameObject = inventory.GetSelectedItemName();
         Debug.Log(nameObject);
         if (nameObject == "Faca"){
-            Debug.Log("Cortou o bolo");
             cakeInfo.cutTheCake();
         }
     }

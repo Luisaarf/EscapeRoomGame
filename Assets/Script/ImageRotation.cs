@@ -16,6 +16,7 @@ public class ImageRotation : MonoBehaviour
     [SerializeField] private Button theaterImage4;
     [SerializeField] private Button theaterImage5;
     [SerializeField] private Button theaterImage6;
+    [SerializeField] private GameObject thirdPin;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class ImageRotation : MonoBehaviour
         theaterImage4.transform.Rotate(0, 0, -90);
         theaterImage5.transform.Rotate(0, 0, 90);
         theaterImage6.transform.Rotate(0, 0, 90);
+        thirdPin.SetActive(false);
     }
 
     public void SetSpotlightActive(){
@@ -57,6 +59,7 @@ public class ImageRotation : MonoBehaviour
         }
         if(isCorrect){
             turnInteractable();
+            thirdPin.SetActive(true);
         }
     }
 }
