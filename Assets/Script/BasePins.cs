@@ -51,7 +51,7 @@ public class BasePins : MonoBehaviour //classe pública BasePins que herda de Mo
         //se o item selecionado for o terceiro pin ele muda a cor da base para branco e destroi o item selecionado
         if (inventory.GetSelectedItemName() == "3rd Pin")
         {
-            thirdPinBase.gameObject.GetComponent<Image>().color = new Color(1f, 0, 0.8f, 1f);
+            thirdPinBase.gameObject.GetComponent<Image>().color = Color.white;
             inventory.DestroySelectedItem();
         }
     }
