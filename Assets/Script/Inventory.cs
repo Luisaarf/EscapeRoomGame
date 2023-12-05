@@ -76,6 +76,8 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
             newSelectedItem.GetComponent<Outline>().effectColor = Color.black;
             selectedFeedback.showObjectSelectedName();
         }
+        selectedFeedback.CoffeeInteract();
+        
     }
 
     //procedimento que tem a função de tirar a seleção do item quando utilizado 

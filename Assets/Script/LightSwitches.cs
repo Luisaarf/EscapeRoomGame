@@ -14,6 +14,8 @@ public class LightSwitches : MonoBehaviour
 
     [SerializeField] private ImageRotation imageRotation;
 
+    [SerializeField] private Sprite lightOn;
+
     void Start()
     {
         system = EventSystem.current;
@@ -60,6 +62,7 @@ public class LightSwitches : MonoBehaviour
             disableLightButtons();
             spotlight.color = Color.white;
             imageRotation.SetSpotlightActive();
+            spotlight.sprite = lightOn;
         }
     }
 

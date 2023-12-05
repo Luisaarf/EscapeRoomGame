@@ -28,12 +28,12 @@ public class InterectableItem : MonoBehaviour
     //declaração de variável que faz referência ao script SelectedFeedback
     [SerializeField] private SelectedFeedback selectedFeedback;
 
+
     void Start(){
         //antes do primeiro frame do jogo ele desativa os seguintes objetos
         doorMessage.SetActive(false);
         doorFrameMessage.SetActive(false);
         doorClickMessage.SetActive(false);
-        
     }
 
     //procedimento público que é ativado ao interagir com o bolo
