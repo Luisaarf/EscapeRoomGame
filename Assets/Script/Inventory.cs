@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
     //variável pública e estática (preservar valor mesmo depois de sair do escopo) que guarda o botão selecionado
     [SerializeField] private static Button selectedItem;
     [SerializeField] private static Button newSelectedItem;
+    //declaração do script SelectedFeedback
     [SerializeField] private SelectedFeedback selectedFeedback;
     [SerializeField] private GameObject spaceIn;
     [SerializeField] private Sprite square;
@@ -43,8 +44,11 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
         return null;
     }
 
+    //função que retorna o nome do item selecionado
     public string GetSelectedItemName(){
+        //se o item selecionado não for nulo
         if(selectedItem != null){
+            //retorna o nome
             return selectedItem.GetComponent<InvSpaceInfo>().GetObjectName();
         }
         return null;
@@ -53,21 +57,29 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
 
     //procedimento que atribui o botão selecionado à variável selectedItem
     public void SetSelectedItemButton(){
+        //pega o componente do novo item selecionado
         newSelectedItem = system.currentSelectedGameObject.GetComponent<Button>();
-        if(newSelectedItem != selectedItem){
+        if(newSelectedItem != selectedItem){ //se o novo item selecionado não for o mesmo que o item selecionado anteriormente
             if(selectedItem != null){
+                //ele volta o contorno do item anterior para preto
                 selectedItem.GetComponent<Outline>().effectColor = Color.black;
             }
+            //atribui o novo item selecionado à variável selectedItem
             selectedItem = newSelectedItem;
+            //atribui a cor amarela ao contorno do novo item selecionado
             newSelectedItem.GetComponent<Outline>().effectColor = Color.yellow;
+            //chama o método showObjectSelectedName do script SelectedFeedback
             selectedFeedback.showObjectSelectedName();
         } else {
+            //se o novo item selecionado for o mesmo que o item selecionado anteriormente ele tira a seleção
             selectedItem = null;
             newSelectedItem.GetComponent<Outline>().effectColor = Color.black;
             selectedFeedback.showObjectSelectedName();
         }
     }
 
+    //procedimento que tem a função de tirar a seleção do item quando utilizado 
+    //volta ao padrão 
     public void SetSelectedItemButtonNull(){
         selectedItem = null;
         newSelectedItem.GetComponent<Outline>().effectColor = Color.black;
@@ -86,17 +98,17 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
         for(int i = 0; i <= 7; i++){
             //se o botão não estiver interagível
             if(allSpaces[i].interactable == false){
-                //atribui o sprite do botão ao botão do inventário
-                Debug.Log(i);
-                //allSpaces[i].image.sprite = item.image.sprite;
-                //GameObject inside = allSpaces[i].gameObject.transform.GetChild(0).gameObject;
+                //pega o filho do botão do inventário da posição i e atribui à variável spaceIn
                 spaceIn = allSpaces[i].gameObject.transform.GetChild(0).gameObject;
-                Debug.Log(spaceIn.name);
+                //atribui o sprite do botão ao filho do botão do inventário
                 spaceIn.GetComponent<Image>().sprite = item.image.sprite;
-                //atribui a cor do botão ao botão do inventário
+                //atribui a cor do botão ao filho do botão do inventário
                 spaceIn.GetComponent<Image>().color = item.image.color;
+                //acessa o nome do objeto escrito no componente collectInfo de cada objeto coletável
+                // ao filho do botão do inventário
                 allSpaces[i].GetComponent<InvSpaceInfo>().SetObjectName(item.GetComponent<CollectInfo>().GetObjectName());
-                //ativa a interação do botão do inventário
+                //ativa a interação do botão do inventário 
+                //assim ele poderá ser selecionado e será compreendido como um botão que tem um item armazenado nele
                 allSpaces[i].interactable = true;
                 item.gameObject.SetActive(false); //desativa o botão do item
                 break; //para o loop
@@ -108,10 +120,10 @@ public class Inventory : MonoBehaviour //classe pública Inventory que herda de 
     public void DestroySelectedItem(){
         selectedItem.GetComponent<Image>().sprite = square; //sprite do botão nulo
         selectedItem.GetComponent<Image>().color =Color.white; //botão volta a ter cor padrão
-        selectedItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = square;
-        selectedItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color(0.784f, 0.784f, 0.784f, 1f);
+        selectedItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = square; //sprite do filho do botão nulo
+        selectedItem.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color(0.784f, 0.784f, 0.784f, 1f); //cor do filho do botão volta a ser padrão
         selectedItem.interactable = false; //botão não fica mais interativo
-        SetSelectedItemButtonNull();
+        SetSelectedItemButtonNull(); //botão selecionado volta a ser nulo
     }
 
 }

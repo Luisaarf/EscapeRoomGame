@@ -1,3 +1,5 @@
+//classe responsável pelo quadro
+// declaração das classes a serem utilizadas
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +7,17 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Painting : MonoBehaviour
+public class Painting : MonoBehaviour //classe pública Painting que herda de MonoBehaviour
 {
+    //declaração de botão que será utilizado para aproximar o quadro
     [SerializeField] Button paintingFocus;
+    //declaração do script DrawerInteraction
     [SerializeField] DrawerInteraction drawerInteraction;
+    //declaração de botão que será utilizado para afastar o quadro
     [SerializeField] Button disfocusButton;
     [SerializeField] GameObject painting;
+    //declaração de objetos que serão utilizados para mostrar os números nos quadros após serem pintados
+    // cada número é um objeto na cena
     [SerializeField] GameObject numberSky;
     [SerializeField] GameObject numberCloud;
     [SerializeField] GameObject numberSun;
@@ -21,17 +28,20 @@ public class Painting : MonoBehaviour
     [SerializeField] GameObject Cloud1;
     [SerializeField] GameObject Cloud2;
 
+    //declaração de variáveis do tipo imagem e string, serão utilizadas posteriormente como temporárias
     private Image image;
+    string currentColor;
 
     //declaração de objeto da classe EventSystem
     EventSystem system;
-    string currentColor;
+    //declaração de variáveis do tipo Vector3 que serão utilizadas para guardar a posição e escala inicial do quadro
     Vector3 initialPosition;
     Vector3 initialScale;
  
     // Start is called before the first frame update
     void Start()
     {
+        //inicialização dos objetos
         disfocusButton.gameObject.SetActive(false);
         system = EventSystem.current;
         numberCloud.SetActive(false);
@@ -40,11 +50,14 @@ public class Painting : MonoBehaviour
         numberLeaves.SetActive(false);
         numberTreeWood.SetActive(false);
         numberHouse.SetActive(false);
+        //atualiza as variáveis com a posição e escala inicial do quadro
         initialPosition = painting.transform.position;
         initialScale = painting.transform.localScale;
     }
 
+    // procedimento que é chamado ao clicar nas tintas do quadro
     public void getColor(){
+        //pega
         currentColor = system.currentSelectedGameObject.name;
     }
 

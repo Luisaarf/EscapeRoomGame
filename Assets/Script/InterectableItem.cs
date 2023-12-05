@@ -13,49 +13,59 @@ public class InterectableItem : MonoBehaviour
     [SerializeField] Inventory inventory;
     //declaração de variável privada que guarda o botão selecionado
     private Button selectedItem;
-    //declaração de variável privada que guarda o botão do item verde
-    [SerializeField] private Button greenButton;
 
+    //delcaração das variáveis que vão guardar os objetos relacionados a porta
     [SerializeField] private GameObject doorMessage;
     [SerializeField] private GameObject doorFrameMessage;
     [SerializeField] private GameObject doorClickMessage;
-    string nameObject;
+    //[SerializeField] private Button CoffeJar;
+    //declaração de variável privada que guarda o sprite da xícara cheia
+    [SerializeField] private Sprite filledCoffe;
 
+    //Declaração de variável que faz referência ao script CakeInfo
     [SerializeField] CakeInfo cakeInfo;
 
+    //declaração de variável que faz referência ao script SelectedFeedback
+    [SerializeField] private SelectedFeedback selectedFeedback;
+
     void Start(){
+        //antes do primeiro frame do jogo ele desativa os seguintes objetos
         doorMessage.SetActive(false);
         doorFrameMessage.SetActive(false);
         doorClickMessage.SetActive(false);
         
     }
 
-    //procedimento público que ativa a interação do botão selecionado
-    public void GreenInteract(){
-        //atribui o retorno da função GetSelectedItem() à variável selectedItem //essa função existe no objeto inventory
-        selectedItem = inventory.GetSelectedItem();
-        if (selectedItem != null){
-            //atribui a cor do botão selecionado ao botão do item verde
-            greenButton.image.color = selectedItem.image.color;
-            //destroi o item do inventário
-            inventory.DestroySelectedItem();
-        }
-    }
+    //procedimento público que é ativado ao interagir com o bolo
 
     public void CakeInteract(){
-        nameObject = inventory.GetSelectedItemName();
-        Debug.Log(nameObject);
+        // com o script inventory ele chama a função GetSelectedItemName que retorna o nome do objeto selecionado
+        string nameObject = inventory.GetSelectedItemName();
+        //se o nome do objeto selecionado for "Faca" ele chama a função cutTheCake do script CakeInfo que corta o bolo
         if (nameObject == "Faca"){
             cakeInfo.cutTheCake();
         }
     }
 
+    //procedimento público que é ativado ao interagir com a porta
     public void DoorInteract(){
+        //ativa os objetos
         doorMessage.SetActive(true);
         doorFrameMessage.SetActive(true);
         doorClickMessage.SetActive(true);
     }
 
+    //procedimento público que é ativado ao interagir com o jarro de café
+    public void JarInteract(){
+        //change coffee sprite
+        //selectedItem  do inventory e mudar o sprite
+        if (inventory.GetSelectedItemName() == "Xícara")
+        inventory.GetSelectedItem().gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = filledCoffe;
+        inventory.GetSelectedItem().GetComponent<InvSpaceInfo>().SetObjectName("Café");
+        selectedFeedback.showObjectSelectedName();
+    }
+
+    //procedimento público que é ativado ao interagir com a porta
     public void DoorFrameInteract(){
         doorMessage.SetActive(false);
         doorFrameMessage.SetActive(false);
