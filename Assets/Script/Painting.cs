@@ -57,19 +57,23 @@ public class Painting : MonoBehaviour //classe pública Painting que herda de Mo
 
     // procedimento que é chamado ao clicar nas tintas do quadro
     public void getColor(){
-        //pega
+        //pega a cor atual selecionada pelo nome
         currentColor = system.currentSelectedGameObject.name;
     }
 
+    // procedimento que é chamado ao clicar nas partes do quadro que podem ser pintadas
     public void setColor(){
+        //o nome da parte clicada do quadro é armazenado em uma variável
         string gameObject = system.currentSelectedGameObject.name;
-        Debug.Log(gameObject);
-        Debug.Log(currentColor);
+        //em cada condição ele verifica o objeto a ser pintado
+        //e com outra condição ele verifica se é a cor correta
         if (gameObject == "sky"){
             if(currentColor == "colors-C"){
+                //pega o componente imagem do objeto
                 image =system.currentSelectedGameObject.GetComponent<Image>();
-                numberSky.SetActive(true);
+                numberSky.SetActive(true); //ativa o número
                 image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+                // e atribui uma nova cor a ele
             }
         }
         if (gameObject == "cloud"){
