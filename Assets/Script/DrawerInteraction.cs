@@ -57,7 +57,10 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerThirdButton.gameObject.SetActive(false);
         pathPuzzleButton.gameObject.SetActive(false);
         paitingScene.SetActive(false);
-        coffee.SetActive(false);
+        if (coffee)
+        {
+            coffee.SetActive(false);
+        }
     }
 
     public void CloseDrawer()
@@ -69,15 +72,22 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerThirdButton.gameObject.SetActive(true);
         pathPuzzleButton.gameObject.SetActive(true);
         paitingScene.SetActive(true);
-        charcoal.SetActive(false);
+        if (charcoal)
+        {
+            charcoal.SetActive(false);
+        }
     }
 
     public void showCoffee(){
-        coffee.SetActive(true);
+        if(coffee){
+            coffee.SetActive(true);
+        }
     }
 
     public void showCharcoal(){
-        charcoal.SetActive(true);
+        if(charcoal){
+            charcoal.SetActive(true);
+        }
     }
 
     public void disableDrawerButton(){

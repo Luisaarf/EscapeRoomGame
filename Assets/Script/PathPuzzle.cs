@@ -125,8 +125,8 @@ public class PathPuzzle : MonoBehaviour
                 //deletar o traço !
             }
         }
+        
         //se o bool isDragging for verdadeiro
-
         if(isDragging){
             //atualiza a posição do mouse
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

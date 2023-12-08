@@ -31,9 +31,8 @@ public class CollectableItem : MonoBehaviour
         thisCollectableItem = system.currentSelectedGameObject.GetComponent<Button>();
         //chama a função addToInventory() do objeto inventory e passa como parâmetro o botão selecionado
         inventory.addToInventory(thisCollectableItem);
-    }
-
-    
+        Destroy(thisCollectableItem.gameObject);
+    }   
 
 
 }

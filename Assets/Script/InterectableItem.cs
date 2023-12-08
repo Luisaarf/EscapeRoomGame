@@ -27,6 +27,7 @@ public class InterectableItem : MonoBehaviour
 
     //declaração de variável que faz referência ao script SelectedFeedback
     [SerializeField] private SelectedFeedback selectedFeedback;
+    [SerializeField] private GameObject VictoryPanel;
 
 
     void Start(){
@@ -34,6 +35,7 @@ public class InterectableItem : MonoBehaviour
         doorMessage.SetActive(false);
         doorFrameMessage.SetActive(false);
         doorClickMessage.SetActive(false);
+        VictoryPanel.SetActive(false);
     }
 
     //procedimento público que é ativado ao interagir com o bolo
@@ -49,10 +51,15 @@ public class InterectableItem : MonoBehaviour
 
     //procedimento público que é ativado ao interagir com a porta
     public void DoorInteract(){
-        //ativa os objetos
-        doorMessage.SetActive(true);
-        doorFrameMessage.SetActive(true);
-        doorClickMessage.SetActive(true);
+        if(inventory.GetSelectedItemName() == "Chave"){
+            VictoryPanel.SetActive(true);
+        } else{
+            //ativa os objetos
+            doorMessage.SetActive(true);
+            doorFrameMessage.SetActive(true);
+            doorClickMessage.SetActive(true);
+        }
+
     }
 
     //procedimento público que é ativado ao interagir com o jarro de café
