@@ -18,6 +18,8 @@ public class DrawerInteraction : MonoBehaviour
     [SerializeField] private GameObject charcoal;
     [SerializeField] private GameObject coffee;
 
+    [SerializeField] private AudioSource soundDrawer;
+
     private bool notOpenYet;
 
     void Start()
@@ -42,6 +44,7 @@ public class DrawerInteraction : MonoBehaviour
         }
         else
         {
+            soundDrawer.Play();
             openFirstDrawerScene.SetActive(true);
             showCoffee();
             // openDrawerSecondButton.gameObject.SetActive(true);
@@ -51,6 +54,7 @@ public class DrawerInteraction : MonoBehaviour
     }
 
     public void OpenDrawer(){
+        soundDrawer.Play();
         openDrawerButton.gameObject.SetActive(false);
         openFirstDrawerScene.SetActive(true);
         openDrawerSecondButton.gameObject.SetActive(false);
@@ -62,9 +66,14 @@ public class DrawerInteraction : MonoBehaviour
             coffee.SetActive(false);
         }
     }
+    
+    public void DrawerSound()
+    {
+        soundDrawer.Play();
+    }
 
     public void CloseDrawer()
-    {
+    { 
         drawerScene.SetActive(false);
         openFirstDrawerScene.SetActive(false);
         openDrawerButton.gameObject.SetActive(true);

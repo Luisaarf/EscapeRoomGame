@@ -15,18 +15,23 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private Button arrowLeft;
     [SerializeField] private Button arrowRight;
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject creditsPanel;
+    [SerializeField] AudioSource soundButtons;
     //procedimento para começar o jogo 
     public void StartGame(){
         //chama a função da classe SceneManager para carregar a cena pelo nome dela
+        soundButtons.Play();
         SceneManager.LoadScene("SampleScene");
     }
     //procedimento para sair do jogo
     public void QuitGame(){
+        soundButtons.Play();
         Application.Quit();
     }
 
     public void Pause(){
         if (pausePanel.activeSelf){
+            soundButtons.Play();
             pausePanel.SetActive(false);
             arrowLeft.interactable = true;
             arrowRight.interactable= true;
@@ -35,6 +40,7 @@ public class MenuButtons : MonoBehaviour
             
         }
         else{
+            soundButtons.Play();
             pausePanel.SetActive(true);
             arrowLeft.interactable = false;
             arrowRight.interactable = false;
@@ -44,6 +50,7 @@ public class MenuButtons : MonoBehaviour
     }
     
     public void BackMenu(){
+        soundButtons.Play();
         //chama a função da classe SceneManager para carregar a cena pelo nome dela
         SceneManager.LoadScene("Menu");
     }
@@ -52,6 +59,17 @@ public class MenuButtons : MonoBehaviour
         if(pausePanel){
             pausePanel.SetActive(false);
         }
+        creditsPanel.SetActive(false);
+    }
+
+    public void CreditsPanel(){
+        soundButtons.Play();
+        creditsPanel.SetActive(true);
+    }
+
+    public void CloseCreditsPanel(){
+        soundButtons.Play();
+        creditsPanel.SetActive(false);
     }
 
 }
