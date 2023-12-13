@@ -66,10 +66,11 @@ public class InterectableItem : MonoBehaviour
     public void JarInteract(){
         //change coffee sprite
         //selectedItem  do inventory e mudar o sprite
-        if (inventory.GetSelectedItemName() == "Xícara")
+        if (inventory.GetSelectedItemName() == "Xícara"){
         inventory.GetSelectedItem().gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = filledCoffe;
         inventory.GetSelectedItem().GetComponent<InvSpaceInfo>().SetObjectName("Café");
         selectedFeedback.showObjectSelectedName();
+        }
     }
 
     //procedimento público que é ativado ao interagir com a porta

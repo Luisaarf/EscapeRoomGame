@@ -28,6 +28,10 @@ public class WallTransition : MonoBehaviour  //classe pública WallTransition qu
 
     //declaração de variável que guarda a parede atual
     [SerializeField] private int currentWall;
+
+
+    [SerializeField] private LightSwitches lightSwitches;
+    [SerializeField] private ImageRotation imageRotation;
     
     //procedimento Start é chamado antes da primeira atualização do frame
     void Start()
@@ -62,6 +66,11 @@ public class WallTransition : MonoBehaviour  //classe pública WallTransition qu
         else{
             currentWall++; //soma o índice da parede atual em 1
             allWalls[currentWall].SetActive(true); //ativa parede atual acessando pelo índice
+        }
+        if(currentWall ==2){
+            if(lightSwitches.GetSpotlightState()){
+                imageRotation.SetSpotlightActive();
+            }
         }
 
     }

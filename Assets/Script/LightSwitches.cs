@@ -15,6 +15,8 @@ public class LightSwitches : MonoBehaviour
     [SerializeField] private ImageRotation imageRotation;
 
     [SerializeField] private Sprite lightOn;
+    [SerializeField] private AudioSource soundLightSwitch;
+    private bool spotlightOn = false;
 
     void Start()
     {
@@ -59,11 +61,17 @@ public class LightSwitches : MonoBehaviour
             }
         }
         if(isCorrect){
+            soundLightSwitch.Play();
             disableLightButtons();
+            spotlightOn = true;
             spotlight.color = Color.white;
             imageRotation.SetSpotlightActive();
             spotlight.sprite = lightOn;
         }
+    }
+
+    public bool GetSpotlightState(){
+        return spotlightOn;
     }
 
     // Update is called once per frame

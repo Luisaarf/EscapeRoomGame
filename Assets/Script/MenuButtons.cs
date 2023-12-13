@@ -60,6 +60,9 @@ public class MenuButtons : MonoBehaviour
             pausePanel.SetActive(false);
         }
         creditsPanel.SetActive(false);
+        if(pauseButton){
+            pauseButton.gameObject.SetActive(true);
+        }
     }
 
     public void CreditsPanel(){

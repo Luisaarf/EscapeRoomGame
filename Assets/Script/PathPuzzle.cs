@@ -16,6 +16,7 @@ public class PathPuzzle : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private GameObject pinEnd;
     [SerializeField] private GameObject Knife;
+    [SerializeField] private AudioSource scarySound;
     GameObject activePiece;
     bool isDragging;
     bool endPath;
@@ -66,6 +67,7 @@ public class PathPuzzle : MonoBehaviour
                     pinEnd.transform.position = new Vector3(otherPosn.x, otherPosn.y, -5);
                     //determina o final do caminho
                     endPath = true;
+                    scarySound.Play();
                     Knife.SetActive(true); //ativa a faca
 
                 }
