@@ -11,7 +11,8 @@ public class DrawerInteraction : MonoBehaviour
     [SerializeField] private Button openDrawerButton;
     [SerializeField] private Button openDrawerSecondButton;
     [SerializeField] private Button openDrawerThirdButton;
-    [SerializeField] private Button pathPuzzleButton;
+    [SerializeField] private GameObject pathPuzzleButton;
+    [SerializeField] private GameObject focusPaintButton;
     [SerializeField] private Button closeDrawerButton;
     // Start is called before the first frame update
     [SerializeField] private Keycode keycode;
@@ -35,8 +36,9 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerButton.gameObject.SetActive(false);
         openDrawerSecondButton.gameObject.SetActive(false);
         openDrawerThirdButton.gameObject.SetActive(false);
-        pathPuzzleButton.gameObject.SetActive(false);
+        pathPuzzleButton.SetActive(false);
         paitingScene.SetActive(false);
+        focusPaintButton.SetActive(false);
         if(keycode.GetIsCorrect() == false || notOpenYet)
         {
             notOpenYet = false;
@@ -59,8 +61,9 @@ public class DrawerInteraction : MonoBehaviour
         openFirstDrawerScene.SetActive(true);
         openDrawerSecondButton.gameObject.SetActive(false);
         openDrawerThirdButton.gameObject.SetActive(false);
-        pathPuzzleButton.gameObject.SetActive(false);
+        pathPuzzleButton.SetActive(false);
         paitingScene.SetActive(false);
+        focusPaintButton.SetActive(false);
         if (coffee)
         {
             coffee.SetActive(false);
@@ -79,8 +82,9 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerButton.gameObject.SetActive(true);
         openDrawerSecondButton.gameObject.SetActive(true);
         openDrawerThirdButton.gameObject.SetActive(true);
-        pathPuzzleButton.gameObject.SetActive(true);
+        pathPuzzleButton.SetActive(true);
         paitingScene.SetActive(true);
+        focusPaintButton.SetActive(true);
         if (charcoal)
         {
             charcoal.SetActive(false);
@@ -103,14 +107,16 @@ public class DrawerInteraction : MonoBehaviour
         openDrawerButton.gameObject.SetActive(false);
         openDrawerSecondButton.gameObject.SetActive(false);
         openDrawerThirdButton.gameObject.SetActive(false);
-        pathPuzzleButton.gameObject.SetActive(false);
+        pathPuzzleButton.SetActive(false);
+        focusPaintButton.SetActive(false);
     }
 
     public void enableDrawerButton(){
         openDrawerButton.gameObject.SetActive(true);
         openDrawerSecondButton.gameObject.SetActive(true);
         openDrawerThirdButton.gameObject.SetActive(true);
-        pathPuzzleButton.gameObject.SetActive(true);
+        pathPuzzleButton.SetActive(true);
+        focusPaintButton.SetActive(true);
     }
 
 

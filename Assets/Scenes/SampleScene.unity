@@ -2106,7 +2106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &168502845
 Transform:
   m_ObjectHideFlags: 0
@@ -14746,7 +14746,8 @@ MonoBehaviour:
   openDrawerButton: {fileID: 185823986}
   openDrawerSecondButton: {fileID: 335673762}
   openDrawerThirdButton: {fileID: 1945262047}
-  pathPuzzleButton: {fileID: 1406729276}
+  pathPuzzleButton: {fileID: 1406729274}
+  focusPaintButton: {fileID: 2110042275}
   closeDrawerButton: {fileID: 2021231845}
   keycode: {fileID: 1522184543}
   charcoal: {fileID: 977695699}
@@ -15844,7 +15845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1839220482
 Transform:
   m_ObjectHideFlags: 0
